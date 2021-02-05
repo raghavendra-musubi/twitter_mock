@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Post Tweet {% endblock title %}
+
+{% block content %}
+
+<div class="w-50 text-light mx-auto bg-info p-5 rounded my-5">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {{ form | crispy }}   
+
+        {% if form.image.errors %}
+            <p class="text-warning bg-danger rounded px-1">{{ form.image.errors.0 }}</p>
+        {% endif %}
+        
+        <hr>
+
+        <button class="float-right btn btn-primary text-light" type="submit"> Post Tweet</button>
+    
+    </form>
+
+</div>
+
+
+
+{% endblock content %}
