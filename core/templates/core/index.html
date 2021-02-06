@@ -27,7 +27,7 @@
             <p> {{ parent_tweet.tweet_text }} </p>
         </div>
 
-        <div class="card-footer"> <a href="{% url 'reply' parent_tweet.id %}" class="mx-3">Reply</a> <a href="{% url 'detail' parent_tweet.id %}" class="mx-3">View Replies</a> </div>
+        <div class="card-footer"> <a href="{% url 'reply' parent_tweet.id %}" class="card-link">Reply</a> <a href="{% url 'detail' parent_tweet.id %}" class="card-link">View Replies</a> </div>
     </div>
 
     {% endfor %}
