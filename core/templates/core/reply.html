@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Reply {% endblock title %}
+
+{% block content %}
+
+<header>
+    <nav class="navbar navbar-dark bg-info text-light w-50 mx-auto">
+        <a href="{% url 'index' %}" class="text-light"><h1>Home</h1></a>
+    </nav>
+</header>
+
+<div class="w-50 mx-auto bg-info p-3 mb-5">
+
+    <div class="card m-5">
+        <div class="card-header"><h4> {{ parent_tweet.tweet_title }} </h4></div>    
+        
+        <div class="card-body"> 
+            {% if parent_tweet.image %} <img src="{{ parent_tweet.image.url }}" class="my-3" alt="" width="100%"> {% endif %} 
+            <br>
+            <p> {{ parent_tweet.tweet_text }}   </p></div>
+        <div class="card-footer"> 
+
+            <h6>Reply to this tweet</h6>
+            <hr>
+            <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+        
+                {{ form | crispy }}  
+
+                <button class="btn btn-success float-right"> Post Reply </button>
+        
+            </form>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock content %}

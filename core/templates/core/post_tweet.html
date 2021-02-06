@@ -5,6 +5,12 @@
 
 {% block content %}
 
+<header>
+    <nav class="navbar navbar-dark bg-info text-light w-50 mx-auto">
+        <a href="{% url 'index' %}" class="text-light"><h1>Home</h1></a>
+    </nav>
+</header>
+
 <div class="w-50 text-light mx-auto bg-info p-5 rounded my-5">
 
     <form method="POST" enctype="multipart/form-data">

@@ -6,25 +6,28 @@
 {% block content %}
 
 <header>
-    <nav class="navbar navbar-dark bg-primary text-light w-50 mx-auto">
+    <nav class="navbar navbar-dark bg-info text-light w-50 mx-auto">
         <h1>Home</h1>
     </nav>
 </header>
 
-<div class="w-50 mx-auto bg-secondary py-3" style="min-height: 95vh;">
+<div class="w-50 mx-auto bg-info py-3" style="min-height: 95vh;">
 
     <a href="{% url 'post_tweet' %}" class="m-5" style=""> <img style="border-radius: 50%; position: fixed; z-index: 3000; bottom: 10%; right: 30%;" height="100" width="100" class="border border-primary" src="{% static '/core/compose_tweet.jpg' %}" alt=""> </a>
 
     {% for parent_tweet in parent_tweets %}
 
     <div class="card m-5">
+
         <div class="card-header"><h4> {{ parent_tweet.tweet_title }} </h4></div>    
         
         <div class="card-body"> 
             {% if parent_tweet.image %} <img src="{{ parent_tweet.image.url }}" class="my-3" alt="" width="100%"> {% endif %} 
             <br>
-            <p> {{ parent_tweet.tweet_text }}   </p></div>
-        <div class="card-footer"> <a href="#" class="mx-3">Reply</a> <a href="#" class="mx-3">View Replies</a> </div>
+            <p> {{ parent_tweet.tweet_text }} </p>
+        </div>
+
+        <div class="card-footer"> <a href="{% url 'reply' parent_tweet.id %}" class="mx-3">Reply</a> <a href="{% url 'detail' parent_tweet.id %}" class="mx-3">View Replies</a> </div>
     </div>
 
     {% endfor %}

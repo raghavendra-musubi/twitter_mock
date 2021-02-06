@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Reply {% endblock title %}
+
+{% block content %}
+
+<header>
+    <nav class="navbar navbar-dark bg-info text-light w-50 mx-auto">
+        <a href="{% url 'index' %}" class="text-light"><h1>Home</h1></a>
+    </nav>
+</header>
+
+<div class="w-50 mx-auto bg-info p-5 mb-5">
+
+    <div class="card m-5">
+        <div class="card-header"><h4> {{ parent_tweet.tweet_title }} </h4></div>    
+        
+        <div class="card-body"> 
+            {% if parent_tweet.image %} <img src="{{ parent_tweet.image.url }}" class="my-3" alt="" width="100%"> {% endif %} 
+            <br>
+            <p> {{ parent_tweet.tweet_text }}   </p></div>
+        <div class="card-footer"> 
+
+            {% if reply_tweets.count > 0 %} 
+                <h5> Tweet Replies </h5> 
+                
+                <hr>
+
+                {% for reply_tweet in reply_tweets %}
+
+                    <div >
+                        <h6>{{reply_tweet.tweet_title}}</h6>
+                        <p> {{reply_tweet.tweet_text}}</p>
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock content %}
